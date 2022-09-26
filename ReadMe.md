@@ -6,7 +6,7 @@ This project is a course project. We, students of MyDigitalSchool, integrated a 
 To retrieve the project:
 
 ```bash
-https://github.com/Camille38490/Evaluation-Git-B2-2022.git
+https://github.com/OlivierBldn/rambo
 ```
 
 Authors : 
