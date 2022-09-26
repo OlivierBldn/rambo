@@ -1,5 +1,168 @@
-*,:after,:before{
+*, :after,:before{
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
 }
+
+body{
+	background: url(Design/background.jpg);
+	background-size: cover;
+	width: 98vw;
+	height: 98vh;
+	z-index: -1;
+}
+
+/* UP*/ 
+
+.up{
+	display: flex;
+	flex-direction: column;
+	padding: 30px 30px 0px 30px;
+	
+}
+
+.heart, .ammo{
+	display: flex;
+	align-items: center;
+}
+
+.heart img{
+	width: auto;
+	display: block;
+	height: 80px;
+}
+
+
+.ammo img{
+	height: 100px;
+	align-content: center
+}
+
+#ammo{
+	font-size: 30px;
+	padding: 25px 20px;
+	border-radius: 100%;
+	border: 3px solid black;
+	background-color: white;
+	font-weight: 600;
+}
+/* HERO*/
+
+.hero{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.hero img{
+	width: 400px;
+	height: 400px;
+	background: white;
+	border-radius: 100%;
+}
+
+.hero h1{
+	font-size: 60px;
+	letter-spacing: 10px;
+	margin-bottom: 10px;
+	color: rgb(0, 0, 0);
+}
+
+
+/* CONTROLLERS */
+
+.controllers{
+	display: flex;
+	margin: 0 30px -50px 50px;
+	justify-content: flex-end;
+	align-items: flex-end;
+	
+}
+
+.check{
+	position: fixed;
+	left: 60px;
+	bottom: 50px;
+
+}
+.controllers label{
+	font-size: 30px;
+	font-weight: 600;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.controllers #auto{
+	transform: scale(3);
+}
+
+.controllers #shot{
+	height: 120px;
+	width: 120px;
+	padding: 10px;
+	background: white;
+	border-radius: 100%;
+	cursor: pointer;
+	margin-right: 50px;
+}
+.move{
+	border: 3px solid white;
+	padding: 130px;
+	border-radius: 1000px;
+	position: relative;
+}
+.b1{
+	position: absolute;
+	top: 42%;
+	right: 40px;
+	fill: white;
+	cursor: pointer;
+}
+.b2{
+	position: absolute;
+	top: 42%;
+	left: 40px;
+	fill: white;
+	cursor: pointer;
+}
+.b3{
+	position: absolute;
+	bottom: 40px;
+	right: 109px;
+	fill: white;
+	cursor: pointer;
+}
+.b4{
+	position: absolute;
+	top: 38px;
+	right: 109px;
+	fill: white;
+	cursor: pointer;
+}
+.c1{
+	position: absolute;
+	top: 35%;
+	left: 36%;
+	background: white;
+	width: 80px;
+	height: 80px;
+	border-radius: 100%;
+	cursor: pointer;
+}
+
+.iframe{
+	display: none;
+}
+
+@media (max-width:991px){
+	.no-mobile{
+		display: none;
+	}
+	.iframe{
+		display: block;
+		justify-content: center;
+	}
+
+}
+
