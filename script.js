@@ -1,5 +1,5 @@
 function get($elem,$index='none'){
-
+    
     if($index==='none'){
         if(document.querySelectorAll($elem).length > 1){
         return document.querySelectorAll($elem)
