@@ -1,6 +1,43 @@
 var previousLife = 0;
 var tirEtat = false;
 
+let initialLife = 100000;
+
+
+function hpChange(agent){
+    var pourcentHp = (agent.life / initialLife )*100
+    console.log((pourcentHp), "%");
+    if(pourcentHp <= 90 && pourcentHp > 80){
+        document.getElementById("100").src="./Design/Coeur/Demi coeur.svg";
+     }
+     else if(pourcentHp <= 80 && pourcentHp > 70){
+        document.getElementById("100").src="./Design/Coeur/Coeur vide.svg";
+     }
+     else if(pourcentHp <= 70 && pourcentHp > 60){
+        document.getElementById("80").src="./Design/Coeur/Demi coeur.svg";
+     }
+     else if(pourcentHp <= 60 && pourcentHp > 50){
+        document.getElementById("80").src="./Design/Coeur/Coeur vide.svg";
+     }
+     else if(pourcentHp <= 50 && pourcentHp > 40){
+        document.getElementById("60").src="./Design/Coeur/Demi coeur.svg";
+     }
+     else if(pourcentHp <= 40 && pourcentHp > 30){
+        document.getElementById("60").src="./Design/Coeur/Coeur vide.svg";
+     }
+     else if(pourcentHp <= 30 && pourcentHp > 20){
+        document.getElementById("40").src="./Design/Coeur/Demi coeur.svg";
+     }
+     else if(pourcentHp <= 20 && pourcentHp > 10){
+        document.getElementById("40").src="./Design/Coeur/Coeur vide.svg";
+     }
+     else if(pourcentHp <= 10 && pourcentHp > 0){
+        document.getElementById("20").src="./Design/Coeur/Demi coeur.svg";
+     }
+     else if(pourcentHp == 0){
+        document.getElementById("20").src="./Design/Coeur/Coeur vide.svg";
+     }
+}
 
 /** Function to track the loading of the DOM */
 function onAgentChange(agent) {
@@ -8,6 +45,8 @@ function onAgentChange(agent) {
         document.querySelector("#test").classList.toggle("active");
         console.log("agent touché");
         previousLife = agent.life;
+
+        hpChange(agent);
     }
 }
 
@@ -24,20 +63,26 @@ function onAgentUpdate(agent){
     let dx = random(-1,1);
     let dy = random(-1,1);
     let joystick = document.querySelector('.move');
+    let ammonb = document.getElementById("ammo").innerHTML;
 
+    document.getElementById("ammo").innerHTML = document.getElementById("ammo").innerHTML.replace(ammonb, agent.ammo);
+            
 /* Si la checkbox est checkée, le mode automatique est activé */
     if(box.checked){
         joystick.style.display = "none";
         agent.lookTo(0,3);
         agent.move(dx,dy);
+
 /* Rambo ne tire pas tant qu'il n'y a pas d'obstacles devant lui, et change d'image quand il tire */
         if(agent.d === 0){
             agent.fire(false);
-            direction.src = "./Design/Rambo.svg"
+            direction.src = "./Design/Rambo.svg";
         } else {
             agent.fire(true);
-             direction.src = "rambotire.svg"
-            console.log("TIR AUTO")
+             direction.src = "rambotire.svg";
+            console.log("TIR AUTO");
+            
+
         }
     } 
     
@@ -63,6 +108,7 @@ function onAgentUpdate(agent){
 function manual(){
     let joystick = document.querySelector('.move');
     let box = document.getElementById('auto');
+    let ammonb = document.getElementById("ammo").innerHTML;
     
     if(box.checked){
         joystick.style.display = "none";
@@ -160,12 +206,14 @@ function onLoaded()
 
     let tir = document.getElementById('shot');
 
-   
+    
     
     tir.addEventListener("click", (e)=>{
        tirEtat = !tirEtat;
        monAgent.fire(tirEtat);
-       console.log("TIR")
+       console.log("TIR");
+        
+        console.log(monAgent.ammo);
     })
 
 

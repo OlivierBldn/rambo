@@ -158,6 +158,20 @@ body{
 		display: block;
 		justify-content: center;
 	}
+	body{
+		background: none;
+	}
+	.iframe .up{
+		position: absolute;
+		top: 0;
+	
+	}
+	.iframe	.ammo img{
+		width: 13%;
+	}
+	.iframe .heart img{
+		width: 13%;
+	}
 
 }
 
