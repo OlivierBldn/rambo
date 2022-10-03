@@ -43,7 +43,7 @@ class Agent {
 	#isServerConnected;
 	#onChangeCallback;
 	#onUpdateCallback;
-	#readOnly;
+	#readonly;
 	#gamePingEnable;
 	#gameDtPing;
 	#gameDtDisconnect;
@@ -107,7 +107,7 @@ class Agent {
 		this.#topicGameState = 'pytactx/game/state/' + this.#arena; 
 		this.#topicGamePing = 'pytactx/game/ping/' + this.#arena;
 		this.id = id;
-		this.#readOnly = readonly;
+		this.#readonly = readonly;
 		if ( readonly === true ) 
 			this.id += "-readonly"+Math.random().toString(36).substr(2, 4);
 	}
@@ -192,7 +192,7 @@ class Agent {
 	 * @returns {void} 
     */
 	fire(enable=true) {
-		if ( this.#readOnly === true )
+		if ( this.#readonly === true )
 			return;
 		this.#agentRequest['fire'] = enable;
 	}
@@ -204,7 +204,7 @@ class Agent {
 	 * @returns {void} 
     */
 	move(dx,dy) {
-		if ( this.#readOnly === true )
+		if ( this.#readonly === true )
 			return;
 		if ( dy === 0 )
 		{
@@ -232,7 +232,7 @@ class Agent {
 	 * @returns {void} 
    	*/
 	moveTo(x,y,dir) {
-		if ( this.#readOnly === true )
+		if ( this.#readonly === true )
 			return;
 		this.#agentRequest['x'] = x;
 		this.#agentRequest['y'] = y;
@@ -245,7 +245,7 @@ class Agent {
      * @returns {void} 
     */
 	lookTo(dir) {
-		if ( this.#readOnly === true )
+		if ( this.#readonly === true )
 			return;
 		this.#agentRequest['dir'] = dir;
 	}
@@ -346,7 +346,7 @@ class Agent {
 		this.#client.subscribe(this.#topicAgentState);
 		this.#client.subscribe(this.#topicGameState);
 		this.#isServerConnected = true;
-		if ( this.#readOnly === false )  {
+		if ( this.#readonly === false )  {
 			const payload = '{"orientation:0"}';
 			this.__debug('Sending to ' + this.#topicAgentRequest + " : " + payload);
 			const message = new Paho.MQTT.Message(payload);
